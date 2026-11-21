@@ -10,12 +10,13 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "COLOCA_A_TUA_API_KEY",
-  authDomain: "O_TEU_PROJECT_ID.firebaseapp.com",
-  projectId: "O_TEU_PROJECT_ID",
-  storageBucket: "O_TEU_PROJECT_ID.appspot.com",
-  messagingSenderId: "COLOCA_O_TEU_SENDER_ID",
-  appId: "COLOCA_O_TEU_APP_ID"
+  apiKey: "AIzaSyDJ6GdR4z-56hMSA3HWd0XMoSRd5i4oxMw",
+  authDomain: "slaporra-df810.firebaseapp.com",
+  projectId: "slaporra-df810",
+  storageBucket: "slaporra-df810.firebasestorage.app",
+  messagingSenderId: "1005160911500",
+  appId: "1:1005160911500:web:b2cf1fb8f91553c5cb61a9",
+  measurementId: "G-9TRL43ZEKR"
 };
 
 const app = initializeApp(firebaseConfig);
