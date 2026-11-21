@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Um blog moderno criado com HTML, CSS, JavaScript e Firebase.">
+  <title>EntreLinhas — Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">e.</span> EntreLinhas</a>
+    <nav class="nav-links"><a href="#inicio">Início</a><a href="#artigos">Artigos</a></nav>
+    <div class="account-area">
+      <span id="user-label" class="user-label"></span>
+      <button id="open-auth" class="button button-outline">Entrar</button>
+      <button id="logout-button" class="button button-outline hidden">Sair</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="hero-copy">
+        <span class="eyebrow">IDEIAS QUE MERECEM SER LIDAS</span>
+        <h1>Histórias, ideias<br>e <em>pontos de vista.</em></h1>
+        <p>Um espaço para partilhar pensamentos, descobrir perspetivas e conversar sobre aquilo que importa.</p>
+        <a class="button button-dark" href="#artigos">Explorar artigos <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-art" aria-label="Ilustração decorativa de livros">
+        <div class="sun"></div><div class="book book-one"></div><div class="book book-two"></div>
+        <div class="plant">✳</div><span class="art-note">LER · PENSAR · PARTILHAR</span>
+      </div>
+    </section>
+
+    <section class="content-section" id="artigos">
+      <div class="section-heading">
+        <div><span class="eyebrow">O NOSSO ESPAÇO</span><h2>Artigos recentes</h2></div>
+        <span id="post-count" class="post-count">A carregar artigos…</span>
+      </div>
+
+      <section id="composer" class="composer hidden">
+        <div class="composer-heading"><div><span class="eyebrow">A TUA VOZ</span><h3>Escreve um artigo</h3></div><span class="write-icon">✎</span></div>
+        <form id="post-form">
+          <label for="post-title">Título</label>
+          <input id="post-title" maxlength="100" placeholder="Dá um título à tua ideia" required>
+          <label for="post-content">Texto</label>
+          <textarea id="post-content" rows="5" maxlength="10000" placeholder="O que gostarias de partilhar?" required></textarea>
+          <div class="composer-footer"><small>Máximo: 10 000 caracteres</small><button class="button button-dark" type="submit">Publicar artigo ↗</button></div>
+        </form>
+      </section>
+
+      <div id="message" class="message hidden" role="status"></div>
+      <div id="posts" class="posts-grid">
+        <div class="loading-card">A carregar os artigos…</div>
+      </div>
+      <div id="empty-state" class="empty-state hidden">
+        <span>✧</span><h3>Ainda não há artigos</h3><p>Sê a primeira pessoa a partilhar uma ideia.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">e.</span> EntreLinhas</a><span>Feito para boas ideias. © <span id="year"></span></span></footer>
+
+  <div id="auth-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-card">
+      <button class="close-modal" type="button" aria-label="Fechar" data-close-modal>×</button>
+      <span class="eyebrow">BEM-VINDO AO ENTRELInHAS</span>
+      <h2 id="auth-title">Entra na conversa.</h2>
+      <p class="modal-intro">Inicia sessão ou cria uma conta para publicares os teus artigos.</p>
+      <div class="auth-tabs">
+        <button id="login-tab" class="auth-tab active" type="button">Iniciar sessão</button>
+        <button id="register-tab" class="auth-tab" type="button">Criar conta</button>
+      </div>
+      <form id="auth-form">
+        <div id="name-field" class="hidden"><label for="display-name">Nome</label><input id="display-name" autocomplete="name" placeholder="Como te devemos chamar?"></div>
+        <label for="email">Email</label><input id="email" type="email" autocomplete="email" placeholder="teu@email.com" required>
+        <label for="password">Palavra-passe</label><input id="password" type="password" minlength="6" autocomplete="current-password" placeholder="Mínimo de 6 caracteres" required>
+        <p id="auth-error" class="form-error hidden"></p>
+        <button id="auth-submit" class="button button-dark button-full" type="submit">Entrar</button>
+      </form>
+      <p class="secure-note">A autenticação é gerida de forma segura pelo Firebase.</p>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

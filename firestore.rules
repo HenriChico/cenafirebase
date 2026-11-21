@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /posts/{postId} {
+      // Os artigos podem ser lidos por qualquer visitante.
+      allow read: if true;
+
+      // Apenas utilizadores autenticados podem criar artigos em seu próprio nome.
+      allow create: if request.auth != null
+        && request.resource.data.authorId == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 100
+        && request.resource.data.content is string
+        && request.resource.data.content.size() > 0
+        && request.resource.data.content.size() <= 10000;
+
+      // Só o autor pode apagar o seu artigo.
+      allow delete: if request.auth != null
+        && resource.data.authorId == request.auth.uid;
+
+      // Edição não está implementada nesta versão.
+      allow update: if false;
+    }
+  }
+}
